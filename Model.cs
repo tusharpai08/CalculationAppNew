@@ -32,6 +32,7 @@ namespace CalculationAppNew
         public class Expense
         {
             public int ExpenseID { get; set; }
+            public int ExpenseAmount { get; set; }
             public string ExpenseName { get; set; }
         }
 
