@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using static CalculationAppNew.Model;
 
 namespace CalculationAppNew
 {
@@ -8,33 +6,47 @@ namespace CalculationAppNew
     {
         private static void Main()
         {
-            using (var db = new DBCreationBase())
+            var flag = 0;
+            do
             {
-                // Note: This sample requires the database to be created before running.
-                Console.WriteLine($"Database path: {db.DbPath}.");
+                Console.WriteLine("");
+                Console.WriteLine("======MAIN MENU======");
+                Console.WriteLine("1: Add values to DB");
+                Console.WriteLine("2: List values from DB");
+                Console.WriteLine("3: Truncate Table");
+                Console.WriteLine("4: Exit");
+                Console.WriteLine("=====================");
+                
+                var userInput = Convert.ToInt32(Console.ReadLine());
+                switch (userInput)
+                {
+                    case 1:
+                        Console.WriteLine("Input the type of value: (Expense|Income) ");
+                        string userValueType = Console.ReadLine();
+                        addValues av = new addValues(userValueType);
+                        break;
 
-                // Create
-                Console.WriteLine("Inserting a new Expense");
-                db.Add(new Expense { ExpenseAmount = 100, ExpenseName = "Car" });
-                db.SaveChanges();
+                    case 2:
+                        Console.WriteLine("Input the type of list: (Expense|Income) ");
+                        string userListType = Console.ReadLine();
+                        listValues lv = new listValues(userListType);
+                        break;
 
-                Console.WriteLine("Inserting a new Income");
-                db.Add(new Income { IncomeAmount = 100, IncomeName = "Crypto" });
-                db.SaveChanges();
+                    case 3:
+                        Console.WriteLine("Truncate: (Expense|Income)");
+                        string userTableName = Console.ReadLine();
+                        truncateTable tt = new truncateTable(userTableName);
+                        break;
 
-                // Read
-                Console.WriteLine("Querying for a Expense");
-                var y = db.Expenses
-                    .OrderBy(b => b.ExpenseID)
-                    .First();
-                Console.WriteLine($"{y.ExpenseName} costs {y.ExpenseAmount}");
+                    case 4:
+                        flag = 1;
+                        break;
 
-                Console.WriteLine("Querying for a Income");
-                var x = db.Incomes
-                    .OrderBy(b => b.IncomeID)
-                    .First();
-                Console.WriteLine($"{x.IncomeName} costs {x.IncomeAmount}");
-            }
+                    default:
+                        break;
+                }
+
+            } while (flag != 1);
         }
     }
 }
