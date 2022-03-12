@@ -1,5 +1,6 @@
 ﻿using System;
 using static CalculationAppNew.Model;
+
 namespace CalculationAppNew
 {
 	public class listValues
@@ -8,7 +9,8 @@ namespace CalculationAppNew
         /// Calls the logic to check a list based on type selected by user
         /// </summary>
         /// <param name="listType">Expense or Income</param>
-		public listValues(string listType)
+        
+		public static void list(string listType)
 		{
             if (listType == "Expense" | listType == "expense")
 			{
@@ -40,9 +42,8 @@ namespace CalculationAppNew
                 }
             }
             else
-            {
-                Console.WriteLine("Command not recognised");
-            }
+                customTextColor.PrintWarning("Command not recognised");
+            
         }
 	}
 }

@@ -1,14 +1,17 @@
 ﻿using System;
 using static CalculationAppNew.Model;
 
-
 namespace CalculationAppNew
 {
 	public class addValues
 	{
-		public addValues(string listType)
+        /// <summary>
+        /// Function to add values to DB for the given List Type
+        /// </summary>
+        /// <param name="listType">Expense or Income</param>
+        
+        public static void add(string listType)
 		{
-            customTextColor ct = new();
             if (listType == "Expense" | listType == "expense")
             {
                 using (var db = new DBCreationBase())
@@ -35,7 +38,7 @@ namespace CalculationAppNew
                         progressBar.WriteProgress(i, true);
                         Thread.Sleep(50);
                     }
-                    ct.SuccessMessage("Value added & DB updated successfully...!");
+                    customTextColor.SuccessMessage("Value added & DB updated successfully...!");
                 }
             }
             else if (listType == "Income" | listType == "income")
@@ -64,11 +67,11 @@ namespace CalculationAppNew
                         progressBar.WriteProgress(i, true);
                         Thread.Sleep(50);
                     }
-                    ct.SuccessMessage("Value added & DB updated successfully...!");
+                    customTextColor.SuccessMessage("Value added & DB updated successfully...!");
                 }
             }
             else
-                ct.PrintWarning("Input not recognised");
+                customTextColor.PrintWarning("Input not recognised");
         }
     }
 }
