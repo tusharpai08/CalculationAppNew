@@ -10,8 +10,8 @@ namespace CalculationAppNew
             var flag = 0;
             do
             {
-                Console.WriteLine("");
-                Console.WriteLine("======MAIN MENU======");
+                
+                Console.WriteLine("\n======MAIN MENU======");
                 Console.WriteLine("1: Add values");
                 Console.WriteLine("2: List values");
                 Console.WriteLine("3: Truncate Table");
