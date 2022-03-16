@@ -7,25 +7,34 @@ namespace CalculationAppNew
 {
 	public class truncateTable
 	{
-		public truncateTable(string tableName)
+		public static void truncate(string tableName)
 		{
-			customTextColor ct = new();
 			using (var db = new DBCreationBase())
             {
                 if (tableName == "Expense")
 				{
-					ct.PrintWarning("Truncating Expense");
-					db.Database.ExecuteSqlRaw("DELETE FROM Expenses");
-                    ct.SuccessMessage("Expense Table Truncated");
+					customTextColor.PrintWarning("Truncating Expense");
+					customTextColor.PrintWarning("Are you sure about this? (Y|N)");
+					var i = Console.ReadLine();
+                    if (i == "Y")
+                    {
+						db.Database.ExecuteSqlRaw("DELETE FROM Expenses");
+						customTextColor.SuccessMessage("Expense Table Truncated");
+					}
 				}
 				else if (tableName == "Income")
                 {
-                    ct.PrintWarning("Truncating Income");
-					db.Database.ExecuteSqlRaw("DELETE FROM Incomes");
-					ct.SuccessMessage("Income Table Truncated");
+                    customTextColor.PrintWarning("Truncating Income");
+					customTextColor.PrintWarning("Are you sure about this? (Y|N)");
+					var i = Console.ReadLine();
+					if (i == "Y")
+					{
+						db.Database.ExecuteSqlRaw("DELETE FROM Incomes");
+						customTextColor.SuccessMessage("Income Table Truncated");
+					}
 				}
 				else
-                    ct.PrintWarning("Command not recognised");
+                    customTextColor.PrintWarning("Command not recognised");
 			}
 		}
 	}

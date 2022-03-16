@@ -1,19 +1,28 @@
 ﻿using System;
+
 namespace CalculationAppNew
 {
 	public class customTextColor
 	{
-		public void PrintWarning(string messageText)
+		/// <summary>
+        /// Print the recieved text in Red as a warning message 
+        /// </summary>
+        /// <param name="messageText">string</param>
+		public static void PrintWarning(string messageText)
         {
 			Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Waring: {messageText}.");
+            Console.WriteLine($"Waring: {messageText}");
 			Console.ResetColor();
         }
 
-		public void SuccessMessage(string messageText)
+		/// <summary>
+        /// Print the received text in Green as a success message 
+        /// </summary>
+        /// <param name="messageText">string</param>
+		public static void SuccessMessage(string messageText)
 		{
 			Console.ForegroundColor = ConsoleColor.Green;
-			Console.WriteLine($"Success: {messageText}.");
+			Console.WriteLine($"Success: {messageText}");
 			Console.ResetColor();
 		}
 	}
