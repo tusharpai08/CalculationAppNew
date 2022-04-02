@@ -14,7 +14,9 @@ namespace CalculationAppNew.BusinessLogic
         {
             var t = 0;
             int count = 0;
-			using (var db = new DBCreationBase())
+            var sb = new System.Text.StringBuilder();
+
+            using (var db = new DBCreationBase())
             {
                 if (ListType == "Expense")
                 {
@@ -22,10 +24,11 @@ namespace CalculationAppNew.BusinessLogic
                     exp = db.Expenses.ToList();
                     foreach (Expense e in exp)
                     {
-                        Console.WriteLine($"Expense Name: {e.ExpenseName}      | Expense Value: {e.ExpenseAmount}");
+                        sb.Append(String.Format("Expense Name: {0,20} | Expense Amount: {1,5} \n",e.ExpenseName,e.ExpenseAmount));
                         t += e.ExpenseAmount;
                         count += 1;
                     }
+                    Console.WriteLine(sb);
                     Console.WriteLine($"Total of {count} expenses = ${t}");
                 }
                 if (ListType == "Income")

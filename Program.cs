@@ -29,13 +29,13 @@ namespace CalculationAppNew
                         break;
 
                     case 2:
-                        Console.WriteLine("Input the type of list: (Expense|Income) ");
+                        Console.WriteLine("Input the type of list: (Expense|Income|CalcHistory) ");
                         string userListType = Console.ReadLine();
                         listValues.list(userListType);
                         break;
 
                     case 3:
-                        Console.WriteLine("Truncate: (Expense|Income)");
+                        Console.WriteLine("Truncate: (Expense|Income|CalcHistory)");
                         string userTableName = Console.ReadLine();
                         truncateTable.truncate(userTableName);
                         break;
