@@ -3,6 +3,7 @@ using System;
 using CalculationAppNew;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CalculationAppNew.Migrations
 {
     [DbContext(typeof(Model.DBCreationBase))]
-    partial class DBCreationBaseModelSnapshot : ModelSnapshot
+    [Migration("20220402071628_AddCalculationHistory")]
+    partial class AddCalculationHistory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.3");
@@ -46,7 +48,7 @@ namespace CalculationAppNew.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("CalculationHistories", (string)null);
+                    b.ToTable("CalculationHistories");
                 });
 
             modelBuilder.Entity("CalculationAppNew.Model+Expense", b =>
@@ -63,7 +65,7 @@ namespace CalculationAppNew.Migrations
 
                     b.HasKey("ExpenseID");
 
-                    b.ToTable("Expenses", (string)null);
+                    b.ToTable("Expenses");
                 });
 
             modelBuilder.Entity("CalculationAppNew.Model+Income", b =>
@@ -80,7 +82,7 @@ namespace CalculationAppNew.Migrations
 
                     b.HasKey("IncomeID");
 
-                    b.ToTable("Incomes", (string)null);
+                    b.ToTable("Incomes");
                 });
 #pragma warning restore 612, 618
         }

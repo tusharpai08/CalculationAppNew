@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace CalculationAppNew
 {
@@ -10,10 +8,13 @@ namespace CalculationAppNew
         {
             public DbSet<Expense> Expenses { get; set; }
             public DbSet<Income> Incomes { get; set; }
+            public DbSet<CalculationHistory> CalculationHistories { get; set; }
 
             public string DbPath { get; }
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
             public DBCreationBase()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
             {
                 var folder = Environment.SpecialFolder.LocalApplicationData;
                 var path = Environment.GetFolderPath(folder);
@@ -33,7 +34,7 @@ namespace CalculationAppNew
         {
             public int ExpenseID { get; set; }
             public int ExpenseAmount { get; set; }
-            public string ExpenseName { get; set; }
+            public string? ExpenseName { get; set; }
         }
 
         /// <summary>
@@ -43,7 +44,22 @@ namespace CalculationAppNew
         {
             public int IncomeID { get; set; }
             public int IncomeAmount { get; set; }
-            public string IncomeName { get; set; }
+            public string? IncomeName { get; set; }
+        }
+
+        /// <summary>
+        /// Calculation History 
+        /// </summary>
+        public class CalculationHistory
+        {
+            public int ID { get; set; }
+            public double DailyExpense { get; set; }
+            public double Splurge { get; set; }
+            public double FireExtinguisher { get; set; }
+            public double Smile { get; set; }
+            public string? Mojo { get; set; }
+            public double Grow { get; set; }
+            public DateTime WhenAdded { get; set; }
         }
     }
 }

@@ -16,16 +16,23 @@ namespace CalculationAppNew
             {
                 using (var db = new DBCreationBase())
                 {
-                    // Create
-                    Console.WriteLine("Please enter expense name:");
-                    var exName = Console.ReadLine();
-                    Console.WriteLine("Please enter expense amount:");
-                    var exAmount = Convert.ToInt32(Console.ReadLine());
-                    db.Add(new Expense { ExpenseName = exName, ExpenseAmount = exAmount });
-                    db.SaveChanges();
+                    var repeat = "Y";
+                    //Add expense to DB in recursive
+                    do
+                    {
+                        Console.WriteLine("Please enter expense name:");
+                        var exName = Console.ReadLine();
+                        Console.WriteLine("Please enter expense amount:");
+                        var exAmount = Convert.ToInt32(Console.ReadLine());
+                        db.Add(new Expense { ExpenseName = exName, ExpenseAmount = exAmount });
+                        db.SaveChanges();
+                        Console.WriteLine("Add more expense ?(Y|N)");
+                        Console.WriteLine();
+                        repeat = Console.ReadLine();
+                    } while (repeat != "N");
 
                     //Show progress bar status
-                    progressBar.WriteProgressBar(0);
+                        progressBar.WriteProgressBar(0);
                     for (var i = 0; i <= 100; ++i)
                     {
                         progressBar.WriteProgressBar(i, true);
@@ -38,7 +45,7 @@ namespace CalculationAppNew
                         progressBar.WriteProgress(i, true);
                         Thread.Sleep(50);
                     }
-                    customTextColor.SuccessMessage("Value added & DB updated successfully...!");
+                    customTextColor.SuccessMessage("Value(s) added & DB updated successfully...!");
                 }
             }
             else if (listType == "Income" | listType == "income")

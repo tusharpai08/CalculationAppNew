@@ -33,6 +33,17 @@ namespace CalculationAppNew
 						customTextColor.SuccessMessage("Income Table Truncated");
 					}
 				}
+				else if (tableName == "CalcHistory")
+				{
+					customTextColor.PrintWarning("Truncating CalculationHistory");
+					customTextColor.PrintWarning("Are you sure about this? (Y|N)");
+					var i = Console.ReadLine();
+					if (i == "Y")
+					{
+						db.Database.ExecuteSqlRaw("DELETE FROM CalculationHistories");
+						customTextColor.SuccessMessage("CalculationHistory Table Truncated");
+					}
+				}
 				else
                     customTextColor.PrintWarning("Command not recognised");
 			}
