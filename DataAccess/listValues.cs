@@ -51,9 +51,9 @@ namespace CalculationAppNew
                     Console.WriteLine("========================CALCULATION LIST==========================");
                     List<CalculationHistory> calc = new List<CalculationHistory>();
                     calc = db.CalculationHistories.ToList();
+                    sb.Append(String.Format("  {0,13} | {1,10} | {2,17} | {3,7} | {4,10} | {5,7} | {6,20}\n", "DailyExpense", "Splurge", "FireExtinguisher", "Smile", "Mojo", "Grow", "WhenAdded"));
                     foreach (CalculationHistory c in calc)
                     {
-                        sb.Append(String.Format("  {0,13} | {1,10} | {2,17} | {3,7} | {4,10} | {5,7} | {6,20}\n", "DailyExpense", "Splurge", "FireExtinguisher", "Smile", "Mojo", "Grow", "WhenAdded"));
                         sb.Append(String.Format("  {0,13:F2} | {1,10:F2} | {2,17:F2} | {3,7:F2} | {4,10} | {5,7:F2} | {6,20}\n", c.DailyExpense, c.Splurge, c.FireExtinguisher, c.Smile, c.Mojo, c.Grow, c.WhenAdded));
                     }
                     Console.WriteLine(sb);

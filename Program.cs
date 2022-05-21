@@ -1,5 +1,6 @@
 ﻿using System;
 using CalculationAppNew.BusinessLogic;
+using CalculationAppNew.DataAccess;
 
 namespace CalculationAppNew
 {
@@ -13,10 +14,11 @@ namespace CalculationAppNew
                 
                 Console.WriteLine("\n======MAIN MENU======");
                 Console.WriteLine("1: Add values");
-                Console.WriteLine("2: List values");
-                Console.WriteLine("3: Truncate Table");
-                Console.WriteLine("4: Calculate");
-                Console.WriteLine("5: Exit");
+                Console.WriteLine("2: Update values");
+                Console.WriteLine("3: List values");
+                Console.WriteLine("4: Truncate Table");
+                Console.WriteLine("5: Calculate");
+                Console.WriteLine("6: Exit");
                 Console.WriteLine("=====================");
                 
                 var userInput = Convert.ToInt32(Console.ReadLine());
@@ -29,24 +31,30 @@ namespace CalculationAppNew
                         break;
 
                     case 2:
+                        Console.WriteLine("Input the type of value: (Expense|Income) ");
+                        string userUpdateValueType = Console.ReadLine();
+                        updateListRow.update(userUpdateValueType);
+                        break;
+
+                    case 3:
                         Console.WriteLine("Input the type of list: (Expense|Income|CalcHistory) ");
                         string userListType = Console.ReadLine();
                         listValues.list(userListType);
                         break;
 
-                    case 3:
+                    case 4:
                         Console.WriteLine("Truncate: (Expense|Income|CalcHistory)");
                         string userTableName = Console.ReadLine();
                         truncateTable.truncate(userTableName);
                         break;
 
-                    case 4:
+                    case 5:
                         Console.WriteLine("Calculate: (Expense|Income)");
                         string userCalcTable = Console.ReadLine();
                         CalculationBL.calculate(userCalcTable);
                         break;
                         
-                    case 5:
+                    case 6:
                         flag = 1;
                         break;
 
