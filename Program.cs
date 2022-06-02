@@ -11,7 +11,7 @@ namespace CalculationAppNew
             var flag = 0;
             do
             {
-                
+
                 Console.WriteLine("\n======MAIN MENU======");
                 Console.WriteLine("1: Add values");
                 Console.WriteLine("2: Update values");
@@ -20,7 +20,8 @@ namespace CalculationAppNew
                 Console.WriteLine("5: Calculate");
                 Console.WriteLine("6: Exit");
                 Console.WriteLine("=====================");
-                
+
+
                 var userInput = Convert.ToInt32(Console.ReadLine());
                 switch (userInput)
                 {
@@ -53,7 +54,7 @@ namespace CalculationAppNew
                         string userCalcTable = Console.ReadLine();
                         CalculationBL.calculate(userCalcTable);
                         break;
-                        
+
                     case 6:
                         flag = 1;
                         break;
