@@ -2,8 +2,8 @@
 
 namespace CalculationAppNew
 {
-	public class Model
-	{
+    public class Model
+    {
         public class DBCreationBase : DbContext
         {
             public DbSet<Expense> Expenses { get; set; }
@@ -59,7 +59,7 @@ namespace CalculationAppNew
             public double Smile { get; set; }
             public string? Mojo { get; set; }
             public double Grow { get; set; }
-            public DateTime WhenAdded { get; set; }
+            public string? WhenAdded { get; set; }
         }
     }
 }

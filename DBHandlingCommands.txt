@@ -1,0 +1,8 @@
+﻿https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=vs
+
+INPUT COMMANDS FOR DB Rebuild using EF:
+
+dotnet ef migrations add <NameOfEdition eg. V1.0.0>
+
+
+

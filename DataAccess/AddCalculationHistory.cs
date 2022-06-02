@@ -17,8 +17,9 @@ namespace CalculationAppNew.DataAccess
         {
             using (var db = new DBCreationBase())
             {
-                var now = DateTime.Now;
-                db.Add(new CalculationHistory {DailyExpense = DEA, Splurge = SA, FireExtinguisher = FEA, Smile = SML , Mojo = MA, Grow = GA, WhenAdded = now });
+                var now = DateTime.Now.ToString("dddd, dd MMMM yyyy");
+
+                db.Add(new CalculationHistory { DailyExpense = DEA, Splurge = SA, FireExtinguisher = FEA, Smile = SML, Mojo = MA, Grow = GA, WhenAdded = now });
                 db.SaveChanges();
             }
             customTextColor.SuccessMessage("Calculations have been added to DB");
